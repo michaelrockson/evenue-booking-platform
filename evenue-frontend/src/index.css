@@ -194,3 +194,85 @@
     letter-spacing: var(--tracking-normal);
   }
 }
+
+@layer base {
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    color: var(--foreground);
+  }
+
+  h2 {
+    font-family: var(--font-sans);
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    color: var(--foreground);
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+    font-weight: 600;
+    letter-spacing: var(--tracking-normal);
+    color: var(--foreground);
+  }
+
+  h4 {
+    font-family: var(--font-sans);
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    font-weight: 500;
+    letter-spacing: var(--tracking-normal);
+    color: var(--foreground);
+  }
+
+  h5 {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  h6 {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    color: var(--foreground);
+  }
+
+  small, .text-caption {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--muted-foreground);
+  }
+  
+  code, pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  blockquote {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-style: italic;
+    color: var(--popover-foreground);
+    border-left: 2px solid var(--border);
+    padding-left: var(--spacing);
+  }
+}
