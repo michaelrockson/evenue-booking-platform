@@ -25,7 +25,9 @@ export default function LoginForm() {
             <h1>Welcome Back To Evenue</h1>
           </CardTitle>
           <CardDescription>
-            <p className="text-caption">Please enter your details to login.</p>
+            <p className="text-caption text-gray-500">
+              Please enter your details to login.
+            </p>
           </CardDescription>
         </CardHeader>
 
@@ -56,7 +58,7 @@ export default function LoginForm() {
         </CardContent>
 
         <CardFooter className="flex justify-center gap-2">
-          <p className="text-caption">Don't have an account?</p>
+          <p className="text-caption text-gray-500">Don't have an account?</p>
           <CardAction className="text-primary">Register</CardAction>
         </CardFooter>
       </Card>
