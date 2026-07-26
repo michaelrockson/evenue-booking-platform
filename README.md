@@ -16,8 +16,8 @@ Offerors list venues/spaces with availability, capacity, amenities, and pricing.
 
 ## Tech direction
 
-- **Next.js** modular monolith architecture
-- **Domain-driven module boundaries**, internal event-driven communication between modules
+- **PERN Stack** (PostgreSQL, Express, React, Node.js) with **shadcn** for UI
+- **Domain-driven module boundaries** in the backend, internal event-driven communication between modules
 - **Paystack** for payments, integrated behind a swappable payment-provider interface
 - Modules: Identity & Access, Organization & Profile Management, Space (Listing) Management, Booking Management, Payment & Transactions, Review & Reputation, Notification & Communication, Administration, File Management
 

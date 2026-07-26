@@ -1,9 +1,9 @@
 # Evenue: Architecture
 
-Evenue is a three-party venue booking marketplace split into two deployables:
+Evenue is a three-party venue booking marketplace split into two deployables based on the **PERN stack** with **shadcn**:
 
-- **Frontend: Next.js** public/SEO-facing pages (space search/browse, listing pages), authenticated UI for all three roles, and thin calls into the backend API. No core business logic lives here.
-- **Backend: Node.js + Express** a **modular monolith** holding all domain logic, the database, webhook handling (Paystack), background jobs, and scheduled tasks.
+- **Frontend: React with shadcn** public/SEO-facing pages (space search/browse, listing pages), authenticated UI for all three roles, and thin calls into the backend API. No core business logic lives here.
+- **Backend: Node.js + Express + PostgreSQL** a **modular monolith** holding all domain logic, the database, webhook handling (Paystack), background jobs, and scheduled tasks.
 
 Internally, the Express backend is organized into well-bounded modules communicating through defined interfaces and domain events, rather than direct cross-module database access. This keeps development speed high for an early-stage product while leaving a clean seam to extract modules into services later if scale ever demands it.
 
@@ -14,7 +14,7 @@ Internally, the Express backend is organized into well-bounded modules communica
 
 ## Why the split
 
-Next.js alone struggles with three things this platform needs: reliable Paystack webhook processing (idempotency/retries), multi-step transactional workflows (charge + notify + ledger entry together) and scheduled/background jobs (reminders, auto-expiring stale requests, payout batches). Express/Node gives all three a proper home a persistent process that can run a job queue and long-lived workers, rather than forcing everything through Next.js's request/response model.
+A pure frontend framework alone struggles with three things this platform needs: reliable Paystack webhook processing (idempotency/retries), multi-step transactional workflows (charge + notify + ledger entry together) and scheduled/background jobs (reminders, auto-expiring stale requests, payout batches). Express/Node with PostgreSQL gives all three a proper home a persistent process that can run a job queue and long-lived workers, complementing the React frontend rather than forcing everything into serverless functions.
 
 ## Architectural Principles
 
@@ -23,7 +23,7 @@ Next.js alone struggles with three things this platform needs: reliable Paystack
 3. **Event-driven communication between modules.** Modules publish domain events (e.g. `booking.approved`, `payment.captured`) that other modules subscribe to, instead of calling each other's internals synchronously wherever avoidable.
 4. **Strategy pattern for payments.** Paystack is the initial (and likely only, given Ghana market focus) payment strategy, but the payment module is built behind an interface so alternate providers could be added later without touching booking logic.
 5. **Explicit state machines for core workflows.** Booking status transitions are modeled explicitly, not inferred from scattered boolean flags.
-6. **Next.js stays thin.** The frontend never talks to the database directly and never owns business rules it calls the Express API and renders the result.
+6. **React stays thin.** The frontend never talks to the database directly and never owns business rules it calls the Express API and renders the result.
 
 ## Core Domain Abstraction
 
@@ -87,9 +87,9 @@ confirmed → completed (event date passes)
 ## Cross-Cutting Concerns
 
 - **Event bus**: an internal event emitter within the Express backend (in-process, not a message queue at this stage) lets modules react to state changes without tight coupling e.g. Notification listens for `booking.confirmed` without Booking Management knowing Notification exists.
-- **Authorization**: role checks are centralized in Identity & Access and enforced at the API/route boundary of every module, not duplicated per-module. The Next.js frontend passes the authenticated user's token through to the backend on every request rather than making its own authorization decisions.
+- **Authorization**: role checks are centralized in Identity & Access and enforced at the API/route boundary of every module, not duplicated per-module. The React frontend passes the authenticated user's token through to the backend on every request rather than making its own authorization decisions.
 - **Money handling**: all monetary calculations (platform fee, payouts, refunds) live in the Payment module only no module does its own arithmetic on prices.
-- **API boundary**: the Express backend exposes a versioned REST (or similar) API; Next.js is the only consumer for now, but the boundary is clean enough that a mobile app could consume the same API later.
+- **API boundary**: the Express backend exposes a versioned REST (or similar) API; React is the only consumer for now, but the boundary is clean enough that a mobile app could consume the same API later.
 
 ## Open Decisions
 
