@@ -1,13 +1,15 @@
-import { Button } from "@/components/ui/button"
+import { Routes, Route } from "react-router"
 import './App.css'
 
 
 function App() {
 
   return (
-    <Button>
-      <div>Click Me</div>
-    </Button>
+      <>
+         <Routes>
+             <Route path="/" element={""} />
+         </Routes>
+      </>
   )
 }
 
