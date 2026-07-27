@@ -17,7 +17,7 @@ export default function SignupForm() {
       <Card className="flex flex-col gap-6 w-1/2 mx-auto">
         <CardHeader className="flex flex-col gap-4 justify-center items-center">
           <img
-            src="public/evenue-logo-1.png"
+            src="/evenue-logo-1.png"
             alt="Evenue-logo"
             className="h-36 w-36"
           />
