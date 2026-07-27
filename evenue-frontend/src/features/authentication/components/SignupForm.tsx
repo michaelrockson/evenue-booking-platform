@@ -1,12 +1,3 @@
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Section } from "@/components/ui/section.tsx";
@@ -14,42 +5,54 @@ import { Section } from "@/components/ui/section.tsx";
 export default function SignupForm() {
   return (
     <Section>
-      <Card className="flex flex-col gap-6 w-1/2 mx-auto">
-        <CardHeader className="flex flex-col gap-4 justify-center items-center">
+      <div className="flex flex-col gap-6 w-1/2 mx-auto">
+        <div className="flex flex-col gap-4 justify-center items-center">
           <img
             src="/evenue-logo-1.png"
             alt="Evenue-logo"
-            className="h-36 w-36"
+            className="h-40 w-40"
           />
-          <CardTitle>
+          <div>
             <h1>Sign Up With Evenue</h1>
-          </CardTitle>
-          <CardDescription>
+          </div>
+          <div>
             <p className="text-caption text-gray-500">
               Please enter your details to sign up.
             </p>
-          </CardDescription>
-        </CardHeader>
+          </div>
+        </div>
 
-        <CardContent className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
           <div className={"flex flex-col gap-2"}>
             <p className="text-caption">Full Name</p>
-            <Input type="text" placeholder="Full Name"></Input>
+            <Input
+              type="text"
+              placeholder="Enter your full name"
+              className="h-12"
+            ></Input>
           </div>
 
           <div className={"flex flex-col gap-2"}>
             <p className="text-caption">Email</p>
-            <Input type="email" placeholder="Email"></Input>
+            <Input
+              type="email"
+              placeholder="example@gmail.com"
+              className="h-12"
+            ></Input>
           </div>
 
           <div className={"flex flex-col gap-2"}>
             <p className="text-caption">Password</p>
-            <Input type="password" placeholder="Password"></Input>
+            <Input
+              type="password"
+              placeholder="Enter your password"
+              className="h-12"
+            ></Input>
           </div>
 
           <div className="flex flex-col gap-4">
-            <Button>Sign Up</Button>
-            <Button variant="outline">
+            <Button className="h-12">Sign Up</Button>
+            <Button variant="outline" className="h-12">
               <div className="flex gap-2">
                 <img
                   src="/google-icon.svg"
@@ -60,13 +63,13 @@ export default function SignupForm() {
               </div>
             </Button>
           </div>
-        </CardContent>
+        </div>
 
-        <CardFooter className="flex justify-center gap-2">
+        <div className="flex justify-center gap-2">
           <p className="text-caption text-gray-500">Already have an account?</p>
-          <CardAction className="text-primary">Login</CardAction>
-        </CardFooter>
-      </Card>
+          <span className="text-primary">Login</span>
+        </div>
+      </div>
     </Section>
   );
 }
