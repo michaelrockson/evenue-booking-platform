@@ -38,12 +38,17 @@ export default function LoginForm() {
           </div>
 
           <div className={"flex flex-col gap-2"}>
-            <p className="text-caption">Password</p>
+            <div className="flex justify-between">
+              <p className="text-caption">Password</p>
+              <CardAction className="text-primary">
+                Forgot your password?
+              </CardAction>
+            </div>
             <Input type="password" placeholder="Password"></Input>
           </div>
 
           <div className="flex flex-col gap-4">
-            <Button>Login</Button>
+            <Button className="font-bold">Login</Button>
             <Button variant="outline">
               <div className="flex gap-2">
                 <img

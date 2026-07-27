@@ -261,7 +261,7 @@
     line-height: var(--text-sm--line-height);
     color: var(--muted-foreground);
   }
-  
+
   code, pre {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
