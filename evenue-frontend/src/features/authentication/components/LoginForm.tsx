@@ -52,7 +52,7 @@ export default function LoginForm() {
             <Button variant="outline">
               <div className="flex gap-2">
                 <img
-                  src="public/google-icon.svg"
+                  src="/google-icon.svg"
                   alt="Google Icon"
                   className="h-4 w-4"
                 />
