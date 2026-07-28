@@ -1,8 +1,25 @@
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Section } from "@/components/ui/section.tsx";
+import {useState} from "react";
+import useSignUpForm from "@/features/authentication/hooks/useSignUpForm.tsx";
 
 export default function SignupForm() {
+
+  const [isTouched, setTouched] = useState({ userName: false, email: false, password: false });
+
+  const {
+    userName,
+    email,
+    password,
+    handleUserNameChange,
+    handleEmailChange,
+    handlePasswordChange,
+    validateUserName,
+    validateEmail,
+    validatePassword,
+  } = useSignUpForm();
+
   return (
     <Section>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
@@ -29,7 +46,15 @@ export default function SignupForm() {
               type="text"
               placeholder="Enter your full name"
               className="h-12"
+              value={userName}
+              onChange={handleUserNameChange}
+              onBlur={() => setTouched({ ...isTouched, userName: true })}
             ></Input>
+            {isTouched.userName && (
+              <p className="text-red-500 text-caption">
+                {validateUserName(userName)}
+              </p>
+            )}
           </div>
 
           <div className={"flex flex-col gap-2"}>
@@ -38,7 +63,15 @@ export default function SignupForm() {
               type="email"
               placeholder="example@gmail.com"
               className="h-12"
+              value={email}
+              onChange={handleEmailChange}
+              onBlur={() => setTouched({ ...isTouched, email: true })}
             ></Input>
+            {isTouched.email && (
+              <p className="text-red-500 text-caption">
+                {validateEmail(email)}
+              </p>
+            )}
           </div>
 
           <div className={"flex flex-col gap-2"}>
@@ -47,7 +80,14 @@ export default function SignupForm() {
               type="password"
               placeholder="Enter your password"
               className="h-12"
+              onChange={handlePasswordChange}
+              onBlur={() => setTouched({ ...isTouched, password: true })}
             ></Input>
+            {isTouched.password && (
+              <p className="text-red-500 text-caption">
+                {validatePassword(password)}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-4">

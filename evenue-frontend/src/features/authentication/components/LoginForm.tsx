@@ -1,8 +1,21 @@
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
+import useAuthForm from "@/features/authentication/hooks/useAuthForm.tsx";
+import { useState } from "react";
 
 export default function LoginForm() {
+  const [isTouched, setTouched] = useState({ email: false, password: false });
+
+  const {
+    email,
+    password,
+    handleEmailChange,
+    handlePasswordChange,
+    validateEmail,
+    validatePassword,
+  } = useAuthForm();
+
   return (
     <Section>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
@@ -29,7 +42,15 @@ export default function LoginForm() {
               type="email"
               placeholder="example@gmail.com"
               className="h-12"
+              value={email}
+              onChange={handleEmailChange}
+              onBlur={() => setTouched({ ...isTouched, email: true })}
             ></Input>
+            {isTouched.email && (
+              <p className="text-red-500 text-caption">
+                {validateEmail(email)}
+              </p>
+            )}
           </div>
 
           <div className={"flex flex-col gap-2"}>
@@ -41,7 +62,15 @@ export default function LoginForm() {
               type="password"
               placeholder="Enter your password"
               className="h-12"
+              value={password}
+              onChange={handlePasswordChange}
+              onBlur={() => setTouched({ ...isTouched, password: true })}
             ></Input>
+            {isTouched.password && (
+              <p className="text-red-500 text-caption">
+                {validatePassword(password)}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-4">
