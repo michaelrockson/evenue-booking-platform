@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { useState } from "react";
-import useSignUpForm from "@/features/authentication/hooks/useSignUpForm.tsx";
+import useSignUpForm from "@/features/auth/hooks/useSignUpForm.tsx";
 
 export default function SignupForm() {
   const [isTouched, setTouched] = useState({
@@ -20,10 +20,11 @@ export default function SignupForm() {
     validateUserName,
     validateEmail,
     validatePassword,
+    onSignUp,
   } = useSignUpForm();
 
   return (
-    <form>
+    <form onSubmit={onSignUp}>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
         <div className="flex flex-col gap-4 justify-center items-center">
           <img
@@ -93,7 +94,9 @@ export default function SignupForm() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <Button className="h-12">Sign Up</Button>
+            <Button className="h-12" type="submit">
+              Sign Up
+            </Button>
             <Button variant="outline" className="h-12">
               <div className="flex gap-2">
                 <img

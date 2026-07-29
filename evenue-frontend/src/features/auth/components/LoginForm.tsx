@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
-import useAuthForm from "@/features/authentication/hooks/useAuthForm.tsx";
+import useAuthForm from "@/features/auth/hooks/useAuthForm.tsx";
 import { useState } from "react";
 
 export default function LoginForm() {
@@ -13,10 +13,11 @@ export default function LoginForm() {
     handlePasswordChange,
     validateEmail,
     validatePassword,
+    onLogin,
   } = useAuthForm();
 
   return (
-    <form>
+    <form onSubmit={onLogin}>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
         <div className="flex flex-col gap-4 justify-center items-center">
           <img
@@ -73,8 +74,10 @@ export default function LoginForm() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <Button className="font-bold h-12">Login</Button>
-            <Button variant="outline" className="h-12">
+            <Button className="font-bold h-12" type="submit">
+              Login
+            </Button>
+            <Button variant="outline" className="h-12" type="submit">
               <div className="flex gap-2">
                 <img
                   src="/google-icon.svg"

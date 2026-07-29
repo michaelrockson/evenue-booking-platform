@@ -72,6 +72,10 @@ export default function useAuthForm() {
     return null;
   }
 
+  async function onLogin(): Promise<void> {
+    // Login Implementation
+  }
+
   return {
     email,
     password,
@@ -79,5 +83,6 @@ export default function useAuthForm() {
     handlePasswordChange,
     validateEmail,
     validatePassword,
+    onLogin,
   };
 }
