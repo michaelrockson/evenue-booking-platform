@@ -1,12 +1,14 @@
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import { Section } from "@/components/ui/section.tsx";
-import {useState} from "react";
+import { useState } from "react";
 import useSignUpForm from "@/features/authentication/hooks/useSignUpForm.tsx";
 
 export default function SignupForm() {
-
-  const [isTouched, setTouched] = useState({ userName: false, email: false, password: false });
+  const [isTouched, setTouched] = useState({
+    userName: false,
+    email: false,
+    password: false,
+  });
 
   const {
     userName,
@@ -21,7 +23,7 @@ export default function SignupForm() {
   } = useSignUpForm();
 
   return (
-    <Section>
+    <form>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
         <div className="flex flex-col gap-4 justify-center items-center">
           <img
@@ -110,6 +112,6 @@ export default function SignupForm() {
           <span className="text-primary">Login</span>
         </div>
       </div>
-    </Section>
+    </form>
   );
 }

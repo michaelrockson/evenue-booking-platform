@@ -1,4 +1,3 @@
-import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import useAuthForm from "@/features/authentication/hooks/useAuthForm.tsx";
@@ -17,7 +16,7 @@ export default function LoginForm() {
   } = useAuthForm();
 
   return (
-    <Section>
+    <form>
       <div className="flex flex-col gap-6 w-1/2 mx-auto">
         <div className="flex flex-col gap-4 justify-center items-center">
           <img
@@ -93,6 +92,6 @@ export default function LoginForm() {
           <span className="text-primary">Register</span>
         </div>
       </div>
-    </Section>
+    </form>
   );
 }

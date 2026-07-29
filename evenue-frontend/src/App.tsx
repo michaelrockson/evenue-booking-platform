@@ -1,14 +1,14 @@
-import { Routes, Route } from "react-router";
+import { Route, Routes } from "react-router";
 import "./App.css";
-import LoginForm from "@/features/authentication/components/LoginForm.tsx";
-import SignupForm from "@/features/authentication/components/SignupForm.tsx";
+import LoginPage from "@/pages/LoginPage.tsx";
+import SignUpPage from "@/pages/SignUpPage.tsx";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </>
   );
