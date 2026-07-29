@@ -20,6 +20,7 @@ export default function SignupForm() {
     validateUserName,
     validateEmail,
     validatePassword,
+    checkEmptyPassword,
     onSignUp,
   } = useSignUpForm();
 
@@ -88,7 +89,7 @@ export default function SignupForm() {
             ></Input>
             {isTouched.password && (
               <p className="text-red-500 text-caption">
-                {validatePassword(password)}
+                {checkEmptyPassword(password) || validatePassword(password)}
               </p>
             )}
           </div>

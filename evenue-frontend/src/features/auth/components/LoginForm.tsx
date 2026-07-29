@@ -12,7 +12,7 @@ export default function LoginForm() {
     handleEmailChange,
     handlePasswordChange,
     validateEmail,
-    validatePassword,
+    checkEmptyPassword,
     onLogin,
   } = useAuthForm();
 
@@ -68,7 +68,7 @@ export default function LoginForm() {
             ></Input>
             {isTouched.password && (
               <p className="text-red-500 text-caption">
-                {validatePassword(password)}
+                {checkEmptyPassword(password)}
               </p>
             )}
           </div>

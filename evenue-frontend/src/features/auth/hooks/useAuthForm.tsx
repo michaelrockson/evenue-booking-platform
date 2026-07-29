@@ -26,6 +26,22 @@ export default function useAuthForm() {
     return null;
   }
 
+  function checkEmptyPassword(password: string): string | null {
+    const emptyPasswordHandler = {
+      characterStartEnd: {
+        regex: /^$/,
+        message: "Password is required!",
+      },
+    };
+
+    for (const { regex, message } of Object.values(emptyPasswordHandler)) {
+      if (regex.test(password)) {
+        return message;
+      }
+    }
+    return null;
+  }
+
   function validatePassword(password: string): string | null {
     const passwordChecks = {
       lowercaseLookahead: {
@@ -51,18 +67,7 @@ export default function useAuthForm() {
       },
     };
 
-    const emptyPasswordHandler = {
-      characterStartEnd: {
-        regex: /^$/,
-        message: "Password is required!",
-      },
-    };
-
-    for (const { regex, message } of Object.values(emptyPasswordHandler)) {
-      if (regex.test(password)) {
-        return message;
-      }
-    }
+    checkEmptyPassword(password);
 
     for (const { regex, message } of Object.values(passwordChecks)) {
       if (!regex.test(password)) {
@@ -83,6 +88,7 @@ export default function useAuthForm() {
     handlePasswordChange,
     validateEmail,
     validatePassword,
+    checkEmptyPassword,
     onLogin,
   };
 }
