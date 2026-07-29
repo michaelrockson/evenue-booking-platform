@@ -67,8 +67,6 @@ export default function useAuthForm() {
       },
     };
 
-    checkEmptyPassword(password);
-
     for (const { regex, message } of Object.values(passwordChecks)) {
       if (!regex.test(password)) {
         return message;
