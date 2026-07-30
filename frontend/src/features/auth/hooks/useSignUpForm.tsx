@@ -10,6 +10,7 @@ export default function useSignUpForm() {
     handlePasswordChange,
     validateEmail,
     validatePassword,
+    checkEmptyPassword,
   } = useAuthForm();
 
   function handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -23,6 +24,10 @@ export default function useSignUpForm() {
     return null;
   }
 
+  async function onSignUp(): Promise<void> {
+    //   SignUp Implementation
+  }
+
   return {
     userName,
     email,
@@ -33,5 +38,7 @@ export default function useSignUpForm() {
     validateUserName,
     validateEmail,
     validatePassword,
+    checkEmptyPassword,
+    onSignUp,
   };
 }
