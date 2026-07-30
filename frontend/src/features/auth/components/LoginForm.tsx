@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import useAuthForm from "@/features/auth/hooks/useAuthForm.tsx";
 import { useState } from "react";
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 export default function LoginForm() {
   const [isTouched, setTouched] = useState({ email: false, password: false });
@@ -9,6 +10,7 @@ export default function LoginForm() {
   const {
     email,
     password,
+    isLoading,
     handleEmailChange,
     handlePasswordChange,
     validateEmail,
@@ -74,7 +76,8 @@ export default function LoginForm() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <Button className="font-bold h-12" type="submit">
+            <Button className="font-bold h-12 flex gap-1" type="submit">
+              {isLoading && <Spinner/>}
               Login
             </Button>
             <Button variant="outline" className="h-12" type="submit">

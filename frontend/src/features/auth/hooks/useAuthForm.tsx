@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function useAuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -76,12 +77,14 @@ export default function useAuthForm() {
   }
 
   async function onLogin(): Promise<void> {
+    setIsLoading(true);
     // Login Implementation
   }
 
   return {
     email,
     password,
+    isLoading,
     handleEmailChange,
     handlePasswordChange,
     validateEmail,

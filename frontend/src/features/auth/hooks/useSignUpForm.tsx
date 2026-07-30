@@ -3,6 +3,8 @@ import useAuthForm from "./useAuthForm";
 
 export default function useSignUpForm() {
   const [userName, setUserName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     email,
     password,
@@ -26,12 +28,14 @@ export default function useSignUpForm() {
 
   async function onSignUp(): Promise<void> {
     //   SignUp Implementation
+    setIsLoading(true);
   }
 
   return {
     userName,
     email,
     password,
+    isLoading,
     handleUserNameChange,
     handleEmailChange,
     handlePasswordChange,
