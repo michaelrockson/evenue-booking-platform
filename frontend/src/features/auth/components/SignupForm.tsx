@@ -83,6 +83,7 @@ export default function SignupForm() {
                             type="password"
                             placeholder="Enter your password"
                             className="h-12"
+                            value={password}
                             onChange={handlePasswordChange}
                             onBlur={() => setTouched({...isTouched, password: true})}
                         ></Input>
