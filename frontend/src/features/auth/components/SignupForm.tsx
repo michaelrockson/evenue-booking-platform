@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {useState} from "react";
 import useSignUpForm from "@/features/auth/hooks/useSignUpForm.tsx";
 import {Spinner} from "@/components/ui/spinner.tsx";
+import {Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field.tsx";
 
 export default function SignupForm() {
     const [isTouched, setTouched] = useState({
@@ -28,26 +29,22 @@ export default function SignupForm() {
 
     return (
         <form onSubmit={onSignUp}>
-            <div className="flex flex-col gap-6 w-1/2 mx-auto">
+            <FieldSet className="flex flex-col gap-6 w-1/2 mx-auto">
                 <div className="flex flex-col gap-4 justify-center items-center">
                     <img
                         src="/evenue-logo-1.png"
                         alt="Evenue-logo"
                         className="h-40 w-40"
                     />
-                    <div>
                         <h1>Sign Up With Evenue</h1>
-                    </div>
-                    <div>
-                        <p className="text-caption text-gray-500">
+                        <FieldDescription>
                             Please enter your details to sign up.
-                        </p>
-                    </div>
+                        </FieldDescription>
                 </div>
 
-                <div className="flex flex-col gap-8">
-                    <div className={"flex flex-col gap-2"}>
-                        <p className="text-caption">Full Name</p>
+                <FieldGroup className="flex flex-col gap-8">
+                    <Field className={"flex flex-col gap-2"}>
+                        <FieldLabel>Full Name</FieldLabel>
                         <Input
                             type="text"
                             placeholder="Enter your full name"
@@ -57,14 +54,14 @@ export default function SignupForm() {
                             onBlur={() => setTouched({...isTouched, userName: true})}
                         ></Input>
                         {isTouched.userName && (
-                            <p className="text-red-500 text-caption">
+                            <FieldError>
                                 {validateUserName(userName)}
-                            </p>
+                            </FieldError>
                         )}
-                    </div>
+                    </Field>
 
-                    <div className={"flex flex-col gap-2"}>
-                        <p className="text-caption">Email</p>
+                    <Field className={"flex flex-col gap-2"}>
+                        <FieldLabel>Email</FieldLabel>
                         <Input
                             type="email"
                             placeholder="example@gmail.com"
@@ -74,14 +71,14 @@ export default function SignupForm() {
                             onBlur={() => setTouched({...isTouched, email: true})}
                         ></Input>
                         {isTouched.email && (
-                            <p className="text-red-500 text-caption">
+                            <FieldError>
                                 {validateEmail(email)}
-                            </p>
+                            </FieldError>
                         )}
-                    </div>
+                    </Field>
 
-                    <div className={"flex flex-col gap-2"}>
-                        <p className="text-caption">Password</p>
+                    <Field className={"flex flex-col gap-2"}>
+                        <FieldLabel>Password</FieldLabel>
                         <Input
                             type="password"
                             placeholder="Enter your password"
@@ -90,11 +87,11 @@ export default function SignupForm() {
                             onBlur={() => setTouched({...isTouched, password: true})}
                         ></Input>
                         {isTouched.password && (
-                            <p className="text-red-500 text-caption">
+                            <FieldError>
                                 {checkEmptyPassword(password) || validatePassword(password)}
-                            </p>
+                            </FieldError>
                         )}
-                    </div>
+                    </Field>
 
                     <div className="flex flex-col gap-4">
                         <Button className="h-12" type="submit">
@@ -112,13 +109,13 @@ export default function SignupForm() {
                             </div>
                         </Button>
                     </div>
-                </div>
+                </FieldGroup>
 
-                <div className="flex justify-center gap-2">
-                    <p className="text-caption text-gray-500">Already have an account?</p>
-                    <span className="text-primary">Login</span>
+                <div className="flex justify-center items-center gap-2">
+                    <FieldDescription>Already have an account?</FieldDescription>
+                    <FieldLabel className="text-primary">Login</FieldLabel>
                 </div>
-            </div>
+            </FieldSet>
         </form>
     );
 }
