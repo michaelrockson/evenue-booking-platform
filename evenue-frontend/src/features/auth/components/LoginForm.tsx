@@ -22,7 +22,6 @@ export default function LoginForm() {
     return (
         <form onSubmit={onLogin}>
             <FieldSet className="flex flex-col gap-6 w-1/2 mx-auto">
-
                 <div className="flex flex-col gap-4 justify-center items-center">
                     <img
                         src="/evenue-logo-1.png"
