@@ -25,7 +25,7 @@ dist-ssr
 
 /src/generated/prisma
 /.env
-/frontend/node_modules/
-/backend/node_modules/
-/frontend/.env
-/backend/.env
+/evenue-frontend/node_modules/
+/evenue-backend/node_modules/
+/evenue-frontend/.env
+/evenue-backend/.env
